@@ -1,6 +1,8 @@
 ---
 import "bootstrap/dist/css/bootstrap.min.css";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js?url";
+import logo from "../assets/logo.jpg";
+
 export interface Props {
   title: string;
 }
@@ -18,26 +20,71 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <header>
+      <nav
+        class="navbar p-4 navbar-expand-md navbar-dark fixed-top custom-bg-nav"
+      >
+        <div class="container-fluid">
+          <div class="logo">
+            <a class="navbar-brand" href="#">
+              <img
+                src={logo}
+                class="img-fluid rounded-circle"
+                width="60"
+                alt=""
+              />
+            </a>
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/empresa">Empresa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/produtos">Produtos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/projetos">Projetos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contatos">Contatos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <slot />
   </body>
   <script src={bootstrap}></script>
 </html>
 <style is:global>
-  :root {
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      #da62c4 30%,
-      white 60%
-    );
+  .custom-bg-nav {
+    background-color: #aa3232;
+    font-weight: 600;
   }
-  html {
-    font-family: system-ui, sans-serif;
-    background-color: #f6f6f6;
+  .nav-link {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-left: 20px;
   }
-  code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+
+  .nav-link:hover {
+    font-size: 1.2rem;
+    color: green;
   }
 </style>
