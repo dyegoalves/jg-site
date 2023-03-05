@@ -1,7 +1,8 @@
 ---
 import "bootstrap/dist/css/bootstrap.min.css";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js?url";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo.png";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 export interface Props {
   title: string;
@@ -22,18 +23,16 @@ const { title } = Astro.props;
   <body>
     <header>
       <nav
-        class="navbar py-4 navbar-expand-md navbar-dark fixed-top custom-bg-nav shadow-lg mb-5"
+        class="navbar py-3 navbar-expand-md navbar-dark fixed-top custom-bg-nav shadow-lg mb-5"
       >
         <div class="container-fluid mx-5">
           <div class="logo">
             <a class="navbar-brand" href="#">
-              <img
-                src={logo}
-                class="img-fluid rounded-circle"
-                width="70"
-                alt=""
-              />
+              <img src={logo} class="img-fluid rounded" width="150" alt="" />
             </a>
+            <h6 style="color: #18b800; margin-top: 5px;">
+              Instalações Esportivas
+            </h6>
           </div>
           <button
             class="navbar-toggler"
@@ -47,7 +46,7 @@ const { title } = Astro.props;
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto">
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/">Inicio</a>
               </li>
@@ -64,17 +63,30 @@ const { title } = Astro.props;
                 <a class="nav-link" href="/contatos">Contatos</a>
               </li>
             </ul>
+            <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+              <li class="nav-item ml-auto">
+                <a
+                  class="nav-link"
+                  target="_blank"
+                  href="https://wa.me/5551999698477"
+                >
+                  <i class="fa-brands fa-whatsapp"></i>
+                  WhatsApp</a
+                >
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
     </header>
-    <slot />
   </body>
-  <script src={bootstrap}></script>
+  <slot />
 </html>
+<script src={bootstrap}></script>
+
 <style is:global>
   .custom-bg-nav {
-    background-color: #aa3232;
+    background-color: rgb(240, 81, 59);
     font-weight: 600;
   }
   .nav-link {
